@@ -287,5 +287,38 @@ function addstudent($NewUser)
         }
     }
 }
+function addcourse($course)
+{
+    $host = "localhost"; $user = "root"; $dbname = "sms_db";
+    $con = mysqli_connect($host, $user,"",$dbname);
+    $code=$course->coursecode;
+    $name=$course->coursename;
+    $desc=$course->description;
+    $grade=$course->grade;
+    $query1 = "SELECT* FROM course WHERE C_Code='$code'";
+    $select=(mysqli_query($con, $query1));
+    
+
+    if (mysqli_num_rows($select))
+     { 
+        echo "<script>
+	        alert('This Course Has Already Been Registered ) :  !');
+	        window.location.href='courseaddform.html';
+	        </script>";
+    }
+     else
+     {
+        
+        $query = "INSERT INTO course VALUES (NULL,'$code','$name','$grade','$desc')";
+        if (mysqli_query($con, $query)) {
+            
+            echo "<script>
+                alert('Course Has been Registered ( : ');
+                window.location.href='managerveiw.html';
+                </script>";
+        }
+    }
+}
+
 
 ?>

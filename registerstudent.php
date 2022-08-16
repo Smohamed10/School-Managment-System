@@ -1,7 +1,7 @@
 <?php
 
 include_once 'Student.php';
-
+include_once 'Parents.php';
 $NewUser=new student;
 $NewUser->parentid=$_POST["ParentId"];
 $NewUser->stdfirstname=$_POST["Firstname"];
@@ -13,7 +13,14 @@ $Password=Encrypt($_REQUEST["Password"],2);
 $NewUser->setstdpassword($Password);
 $NewUser->stdbirthday=$_POST["Birthyear"].'-'.$_POST["Birthmonth"].'-'.$_POST["Birthday"];
 $NewUser->stdpic=addslashes(file_get_contents($_FILES["Image"]["tmp_name"]));
-$NewUser->stdregistration($NewUser);
+$parent=new parents;
+$parent->Address='';
+$parent->birthday='';
+$parent->email='';
+$parent->setpassword('');
+$parent->firstname='';
+$parent->lastname='';
+$parent->add($NewUser);
 
 
 ?>
