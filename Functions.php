@@ -320,5 +320,42 @@ function addcourse($course)
     }
 }
 
+ function editcourse($course)
+{
+   
+    $host = "localhost"; $user = "root"; $dbname = "sms_db";
+    $con = mysqli_connect($host, $user,"",$dbname);
+    $id=$course->Courseid;
+    $code=$course->coursecode;
+    $name=$course->coursename;
+    $desc=$course->description;
+    $grade=$course->grade;
+   
+    $query1 = "SELECT* FROM course WHERE C_Id='$id'";
+    $select=(mysqli_query($con, $query1));
+    
 
+    if (mysqli_num_rows($select))
+     { 
+        echo 'im here';
+        $query = "UPDATE course set C_Code='$code' , C_Name='$name' , C_Describtion='$desc' , C_Grade='$grade' WHERE C_Id='$id' ";
+        if (mysqli_query($con, $query)) 
+            {  
+                
+                echo "<script>
+	        alert('This Course Information Has Successfully Updated ( :  !');
+	        window.location.href='courseupdateform.html';
+	        </script>";
+
+            }
+       
+    }
+     else
+     {
+            echo "<script>
+                alert('Course Not Registered ) : ');
+                window.location.href='managerveiw.html';
+                </script>";
+    }
+}
 ?>
