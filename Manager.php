@@ -19,6 +19,12 @@ class manager extends user implements Ido
         editcourse($course);
 
     }
+    public function veiw($thing)
+    {
+        
+    }
+
+
 
 
 }
