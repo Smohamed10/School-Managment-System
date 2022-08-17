@@ -19,5 +19,9 @@ class parents extends user implements Ido
         $NewUser->stdupdate($NewUser);
 
     }
+    public function veiw($thing)
+    {
+        
+    }
 }
 ?>
