@@ -9,7 +9,7 @@ class parents extends user implements Ido
     {
         $NewUser=new student;
         $NewUser=$thing;
-        $NewUser->stdregistration($NewUser);
+        $NewUser->register('Student');
 
     }
     public function edit($thing) //parent edit student info

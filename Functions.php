@@ -115,6 +115,34 @@ if ($Role=='Teacher')
             }
         
     }
+    if ($Role=='Student')
+    {
+
+    $query1 = "SELECT* FROM student WHERE S_Email='$email' AND S_Password='$pass'";
+   
+    $select=(mysqli_query($con, $query1));
+    $row = mysqli_fetch_array($select, MYSQLI_BOTH);
+    if(mysqli_num_rows($select))
+        {
+            $NewUser->address=$row["S_Address"];
+            $NewUser->birthday=$row["S_DOB"];
+            $NewUser->firstname=$row["S_FirstName"];
+            $NewUser->lastname=$row["S_LastName"];
+             echo "<script>
+	        alert('Welcome (: ');
+	        window.location.href='studentveiw.html';
+	        </script>";
+            return $NewUser;
+        }
+        else
+        {
+            echo "<script>
+	        alert('Incorrect Email, Role Or Password  ): ');
+	        window.location.href='login.html';
+	        </script>";
+        }
+    
+    }
 }
 
  function adduser($NewUser,$Role)
@@ -216,52 +244,14 @@ if ($Role=='Parent')
     
         } 
     }
-}
+    /////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////
 
-
-function stdverifylogin($NewUser,$Role)
-{
-    $host = "localhost"; $user = "root"; $dbname = "sms_db";
-    $con = mysqli_connect($host, $user,"",$dbname);
-    $email=$NewUser->stdemail;
-    $pass=$NewUser->getstdpassword();
     if ($Role=='Student')
     {
-
-   
-
-    $query1 = "SELECT* FROM student WHERE S_Email='$email' AND S_Password='$pass'";
-   
-    $select=(mysqli_query($con, $query1));
-    $row = mysqli_fetch_array($select, MYSQLI_BOTH);
-    if(mysqli_num_rows($select))
-        {
-            $NewUser->stdaddress=$row["S_Address"];
-            $NewUser->stdbirthday=$row["S_DOB"];
-            $NewUser->stdfirstname=$row["S_FirstName"];
-            $NewUser->stdlastname=$row["S_LastName"];
-             echo "<script>
-	        alert('Welcome (: ');
-	        window.location.href='studentveiw.html';
-	        </script>";
-            return $NewUser;
-        }
-        else
-        {
-            echo "<script>
-	        alert('Incorrect Email, Role Or Password  ): ');
-	        window.location.href='login.html';
-	        </script>";
-        }
-    
-    }
-    
-}
-function addstudent($NewUser)
-{
-    $host = "localhost"; $user = "root"; $dbname = "sms_db";
+        $host = "localhost"; $user = "root"; $dbname = "sms_db";
     $con = mysqli_connect($host, $user,"",$dbname);
-    $email=$NewUser->stdemail;
+    $email=$NewUser->email;
     $query1 = "SELECT* FROM student WHERE S_Email='$email'";
     $select=(mysqli_query($con, $query1));
     
@@ -275,9 +265,9 @@ function addstudent($NewUser)
     }
      else
      {
-        $pass=$NewUser->getstdpassword();
+        $pass=$NewUser->getpassword();
         
-        $query = "INSERT INTO student VALUES (NULL,'$NewUser->parentid','$NewUser->stdfirstname','$NewUser->stdlastname','$NewUser->stdaddress','$NewUser->stdemail','$pass','$NewUser->stdbirthday','$NewUser->stdpic')";
+        $query = "INSERT INTO student VALUES (NULL,'$NewUser->parentid','$NewUser->firstname','$NewUser->lastname','$NewUser->address','$NewUser->email','$pass','$NewUser->birthday','$NewUser->stdpic')";
         if (mysqli_query($con, $query)) {
             
             echo "<script>
@@ -286,7 +276,9 @@ function addstudent($NewUser)
                 </script>";
         }
     }
+    }
 }
+
 function addcourse($course)
 {
     $host = "localhost"; $user = "root"; $dbname = "sms_db";

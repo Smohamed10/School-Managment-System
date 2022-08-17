@@ -23,10 +23,6 @@ include_once "Functions.php";
     public function login($user,$role)
     {
         verifylogin($user,$role);
-        $currentuser= verifylogin($user,$role);
-        echo $currentuser->password;
-        echo $currentuser->email;
-
     }
     
     public function register($Role)

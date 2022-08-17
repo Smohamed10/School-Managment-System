@@ -44,13 +44,14 @@ if($role=='Manager')
 if($role=='Student')
 {
  $NewUser=new student;
- $NewUser->stdaddress='';
- $NewUser->stdbirthday='';
- $NewUser->stdemail=$email;
- $NewUser->setstdpassword($pass);
- $NewUser->stdfirstname='';
- $NewUser->stdlastname='';
- $NewUser->stdlogin($NewUser,$role);
+ $NewUser->parentid='';
+ $NewUser->address='';
+ $NewUser->birthday='';
+ $NewUser->email=$email;
+ $NewUser->setpassword($pass);
+ $NewUser->firstname='';
+ $NewUser->lastname='';
+ $NewUser->login($NewUser,$role);
 }
 
 ?>
