@@ -23,6 +23,12 @@ class manager extends user implements Ido
     {
         
     }
+    public function delete($thing) //manager delete course
+    {
+        $course=new course;
+        $course=$thing;
+        deletecourse($course);
+    }
 
 
 

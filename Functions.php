@@ -329,7 +329,6 @@ function addcourse($course)
 
     if (mysqli_num_rows($select))
      { 
-        echo 'im here';
         $query = "UPDATE course set C_Code='$code' , C_Name='$name' , C_Describtion='$desc' , C_Grade='$grade' WHERE C_Id='$id' ";
         if (mysqli_query($con, $query)) 
             {  
@@ -350,4 +349,65 @@ function addcourse($course)
                 </script>";
     }
 }
+ function deletecourse($course)
+ {
+    $host = "localhost"; $user = "root"; $dbname = "sms_db";
+    $con = mysqli_connect($host, $user,"",$dbname);
+    $id=$course->Courseid;
+    $query1 = "SELECT* FROM course WHERE C_Id='$id'";
+    $select=(mysqli_query($con, $query1));
+    if (mysqli_num_rows($select))
+    {
+        $query = "DELETE FROM course WHERE C_Id='$id'";
+        if (mysqli_query($con, $query)) 
+            {  
+                
+                echo "<script>
+	        alert('This Course Information Has Successfully Deleted ( :  !');
+	        window.location.href='coursedeleteform.html';
+	        </script>";
+
+            }
+       
+    }
+     else
+     {
+            echo "<script>
+                alert('Course Not Registered ) : ');
+                window.location.href='managerveiw.html';
+                </script>";
+    }
+    }
+
+    function stdupdate($student)
+    {
+        $host = "localhost"; $user = "root"; $dbname = "sms_db";
+        $con = mysqli_connect($host, $user,"",$dbname);
+        $id=$student->id;
+        $query1 = "SELECT* FROM student WHERE S_Id='$id'";
+        $select=(mysqli_query($con, $query1));
+        if (mysqli_num_rows($select))
+        {
+           $pass= $student->getpassword();
+            $query =  $query = "UPDATE student set S_FirstName='$student->firstname' , S_LastName='$student->lastname' , S_Address='$student->address' , S_Email='$student->email' , S_Password='$pass', S_DOB='$student->birthday', S_Image='$student->stdpic' WHERE S_Id='$id' ";
+            if (mysqli_query($con, $query)) 
+                {  
+                    
+                    echo "<script>
+                alert('The Student Information Has Successfully Updated ( :  !');
+                window.location.href='parentveiw.html';
+                </script>";
+    
+                }
+           
+        }
+         else
+         {
+                echo "<script>
+                    alert('Student Not Registered ) : ');
+                    window.location.href='childupdateform.html';
+                    </script>";
+        }
+
+    }
 ?>
