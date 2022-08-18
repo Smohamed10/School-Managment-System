@@ -26,5 +26,10 @@ class parents extends user implements Ido
     {
         
     }
+    public function send($message)
+    {
+        
+    }
 }
+
 ?>

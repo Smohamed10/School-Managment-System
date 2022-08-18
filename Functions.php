@@ -19,6 +19,7 @@ function Decrypt($Word,$Key)
 	}
 	return $Result;
 }
+
  function verifylogin($NewUser,$Role)
 {
     $host = "localhost"; $user = "root"; $dbname = "sms_db";
@@ -143,6 +144,7 @@ if ($Role=='Teacher')
         }
     
     }
+    return $NewUser->id;
 }
 
  function adduser($NewUser,$Role)
@@ -409,5 +411,13 @@ function addcourse($course)
                     </script>";
         }
 
+    }
+
+    function veiwcourses()
+    {
+        $host = "localhost"; $user = "root"; $dbname = "sms_db";
+        $con = mysqli_connect($host, $user,"",$dbname);
+        $query1 = "SELECT* FROM course";
+        $select=(mysqli_query($con, $query1));
     }
 ?>

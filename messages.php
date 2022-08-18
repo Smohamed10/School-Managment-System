@@ -4,9 +4,9 @@ class messages
 {
 
     public $MessageId;
-    public $Senderid;
+    public $Parentid;
     public $MessageDesc;
-    public $ReceiverId;
+    public $TeacherId;
 
 }
 

@@ -4,5 +4,10 @@ class student extends user
 {
     public $parentid;
     public $stdpic;
+
+    public function veiwcourses()
+    {
+        
+    }
 }
 ?>
