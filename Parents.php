@@ -5,13 +5,7 @@ include_once 'Ido.php';
 include_once'messages.php';
 class parents extends user implements Ido
 {
-    public $Message;
-
-    function __construct($Message)
-    {
-        $this->$Message=$Message;
-        
-    }
+   
 
 	public function add($thing) //parent add student
     {
