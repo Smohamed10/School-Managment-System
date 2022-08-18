@@ -420,4 +420,23 @@ function addcourse($course)
         $query1 = "SELECT* FROM course";
         $select=(mysqli_query($con, $query1));
     }
+
+    function  messageaparent($msg)
+    {
+        echo "iam here";
+
+        $message=$msg->MessageDesc;
+        echo $msg->MessageDesc;
+        $parentid=$msg->Parentid;
+        $teacherid=$msg->TeacherId;
+        $host = "localhost"; $user = "root"; $dbname = "sms_db";
+        $con = mysqli_connect($host, $user,"",$dbname);
+        $query1="INSERT INTO messages VALUES ('$message',NULL,'$parentid','$teacherid')";
+        mysqli_query($con, $query1);
+
+       /* echo "<script>
+        alert('Message has been Sent ) : ');
+        window.location.href='childupdateform.html';
+        </script>";*/
+    }
 ?>
