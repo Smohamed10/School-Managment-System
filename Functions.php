@@ -421,22 +421,30 @@ function addcourse($course)
         $select=(mysqli_query($con, $query1));
     }
 
-    function  messageaparent($msg)
+    function messageaparent($msg)
     {
-        echo "iam here";
-
-        $message=$msg->MessageDesc;
-        echo $msg->MessageDesc;
-        $parentid=$msg->Parentid;
-        $teacherid=$msg->TeacherId;
         $host = "localhost"; $user = "root"; $dbname = "sms_db";
         $con = mysqli_connect($host, $user,"",$dbname);
-        $query1="INSERT INTO messages VALUES ('$message',NULL,'$parentid','$teacherid')";
-        mysqli_query($con, $query1);
-
-       /* echo "<script>
-        alert('Message has been Sent ) : ');
-        window.location.href='childupdateform.html';
-        </script>";*/
-    }
+        $message=$msg->MessageDesc;
+        $parentid=$msg->Parentid;
+        $teacherid=$msg->TeacherId;
+        $query1 = "SELECT* FROM messages ";
+        $select=(mysqli_query($con, $query1));
+        
+        if (mysqli_num_rows($select))
+        {
+           
+            $query = "INSERT into messages VALUES (NULL , '$parentid' , '$teacherid' , '$message' )";
+                if (mysqli_query($con, $query)) 
+                {  
+                    
+                    echo "<script>
+                alert('The message Succesfully sent ( :  !');
+                window.location.href='teacherveiw.html';
+                </script>";
+    
+                }
+           
+        }
+        }
 ?>

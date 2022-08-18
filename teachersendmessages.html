@@ -1,27 +1,25 @@
 <html>
-  <form action="messageaparent.php" method="post">
+  <form action="messagetoaparent.php" method="post">
 <div class="form">
-    <div class="title"> Message a Parent</div>
+    <div class="title"> Message A Parent</div>
     
     <div class="input-container ic1">
-      <input id="firstname" class="input" name="Teacherid" type="text"  placeholder=" " />
+      <input class="input" type="text" name="TeacherId" placeholder="" required="">
       <div class="cut"></div>
-      <label for="Teacherid" class="placeholder">Your ID</label>
+      <label for="TeacherId" class="placeholder">Your ID</label>
+    </div>
+    <div class="input-container ic1">
+      <input class="input" type="text" name="ParentId" placeholder="" required="">
+      <div class="cut"></div>
+      <label for="ParentId" class="placeholder"> Parent ID </label>
+    </div>
+    <div class="input-container ic2">
+      <input class="input" type="text" name="Message" placeholder="" required="">
+      <div class="cut"></div>
+      <label for="Message" class="placeholder">Message</label>
+    </div>
+    <button type="text" class="submit">SEND</button>
   </div>
-
-  <div class="input-container ic1">
-    <input id="firstname" class="input" name="Parentid" type="text"  placeholder=" " />
-    <div class="cut"></div>
-    <label for="Courseid" class="placeholder">Parent ID</label>
-</div>
-
-
-  <div class="input-container ic1">
-    <input id="firstname" class="input" name="Message" type="text"  placeholder=" " />
-    <div class="cut"></div>
-    <label for="Message" class="placeholder">Message </label>
-  <button type="text" class="submit">Send</button>
-</div>
 </form>
 <style>
   body {
