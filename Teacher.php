@@ -6,7 +6,7 @@ class teacher extends user implements Ido
 {
     public function add($thing) 
     {
-       
+        pendinggrade($thing);
 
     }
     public function edit($thing) 
