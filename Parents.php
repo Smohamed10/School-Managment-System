@@ -2,8 +2,8 @@
 include_once 'User.php';
 include_once 'Student.php';
 include_once 'Ido.php';
-include_once'messages.php';
-include_once'Functions.php';
+include_once 'messages.php';
+include_once 'Functions.php';
 class parents extends user implements Ido
 {
    
@@ -28,6 +28,9 @@ class parents extends user implements Ido
     }
     public function send($message)
     {
+        $msg=$message;
+        messageateacher($msg);
+
         
     }
 }
