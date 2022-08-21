@@ -484,24 +484,28 @@ function addcourse($course)
             $result=$grade->grade;
             $comment=$grade->comment;
             $courseid=$grade->courseid;
- //echo $studentid , $teacherid ,  $result ,  $comment, $courseid;
-            $query1 = "SELECT* FROM pending_result ";
-           
+        
+             $query = "INSERT INTO pending_result  VALUES ('$result' , '$comment' , '$studentid' , '$teacherid' , '$courseid')";
+             if (mysqli_query($con, $query))
+    
+                  {
 
-            $select=(mysqli_query($con, $query1));
-           
- if (mysqli_num_rows($select)) {
-    $query = "INSERT INTO pending_result  VALUES ('$result' , '$comment' , '$studentid' , '$teacherid' , '$courseid')";
-    if (mysqli_query($con, $query)) {
-        echo "<script>
+
+                    echo "<script>
                     alert('The result has been added Succesfully  ( :  !');
                     window.location.href='teacherveiw.html';
                     </script>";
-    } else { echo "<script>
+                  } 
+                  
+               else
+
+                   { 
+                        echo "<script>
                         alert('baad  ( :  !');
                         window.location.href='teacherveiw.html';
-                        </script>";}
-                                }
+                        </script>";
+                   }
+                                
     }
                    
                 
