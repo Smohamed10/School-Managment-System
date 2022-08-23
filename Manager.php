@@ -12,22 +12,26 @@ class manager extends user implements Ido
         addcourse($course);
 
     }
-    public function edit($thing) // Manager Edit Course INfo
+    public function edit($thing) // Manager Edit Course info
     {
         $course=new course;
         $course=$thing;
         editcourse($course);
 
     }
-    public function veiw($thing)
+    public function veiw($thing) // Manager Veiw Messages
     {
-        
+        veiwmessages($thing);
     }
     public function delete($thing) //manager delete course
     {
         $course=new course;
         $course=$thing;
         deletecourse($course);
+    }
+    public function approve($result) //manager Approve Grades course
+    {
+        approvegrade($result);
     }
 
 
