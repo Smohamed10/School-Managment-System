@@ -7,7 +7,7 @@ $newresult->studentid= $_POST['StudentId'];
 $newresult->courseid= $_POST['CourseId'];
 $newresult->grade= $_POST['Grade'];
 $newresult->comment=  $_POST['Comment'];
-$newresult->teacherid=  $_POST[''];
+$newresult->teacherid='';
 
 
  $NewUser->Address='';

@@ -173,6 +173,13 @@ if ($Role=='Teacher')
             $query = "INSERT INTO teacher  VALUES (NULL,'$NewUser->firstname','$NewUser->lastname','$NewUser->Address','$NewUser->email','$pass','$NewUser->birthday',NULL)";
             if(mysqli_query($con, $query))
             {
+                $query2 = "SELECT T_Id  FROM teacher WHERE T_FirstName='$NewUser->firstname' AND T_LastName='$NewUser->lastname' AND T_Email='$NewUser->email'";
+                $select=mysqli_query($con, $query2);
+                $row = mysqli_fetch_array($select, MYSQLI_BOTH);
+                $ID=$row['T_Id'];
+                $query2 = "INSERT INTO teacher_phonenumber VALUES ('$NewUser->phonenumber','$ID')";
+                mysqli_query($con, $query2);
+
                 echo "<script>
                 alert('User Has been Registered ( : ');
                 window.location.href='login.html';
@@ -205,10 +212,17 @@ if ($Role=='Parent')
             $query = "INSERT INTO parent VALUES (NULL,'$NewUser->firstname','$NewUser->lastname','$NewUser->Address','$NewUser->email','$pass','$NewUser->birthday')";
             if(mysqli_query($con, $query))
             {
+                $query2 = "SELECT P_Id FROM parent WHERE P_FirstName='$NewUser->firstname' AND P_LastName='$NewUser->lastname' AND P_Email='$NewUser->email'";
+                $select=mysqli_query($con, $query2);
+                $row = mysqli_fetch_array($select, MYSQLI_BOTH);
+                $ID=$row['P_Id'];
+                $query2 = "INSERT INTO parent_phonenumber  VALUES ('$NewUser->phonenumber','$ID')";
+                mysqli_query($con, $query2);
+                
                 echo "<script>
-	        alert('User Has been Registered ( : ');
-	        window.location.href='login.html';
-	        </script>";
+                alert('User Has been Registered ( : ');
+                window.location.href='login.html';
+                </script>";
             }
 
     
@@ -237,6 +251,13 @@ if ($Role=='Parent')
             $query = "INSERT INTO manager VALUES (NULL,'$NewUser->firstname','$NewUser->lastname','$NewUser->Address','$NewUser->email','$pass','$NewUser->birthday')";
             if(mysqli_query($con, $query))
             {
+                $query2 = "SELECT M_Id FROM manager WHERE M_FirstName='$NewUser->firstname' AND M_LastName='$NewUser->lastname' AND M_Email='$NewUser->email'";
+                $select=mysqli_query($con, $query2);
+                $row = mysqli_fetch_array($select, MYSQLI_BOTH);
+                $ID=$row['M_Id'];
+                $query = "INSERT INTO manager_phonenumber  VALUES ('$NewUser->phonenumber','$ID')";
+                mysqli_query($con, $query);
+                
                 echo "<script>
                 alert('User Has been Registered ( : ');
                 window.location.href='login.html';
@@ -272,8 +293,15 @@ if ($Role=='Parent')
         $query = "INSERT INTO student VALUES (NULL,'$NewUser->parentid','$NewUser->firstname','$NewUser->lastname','$NewUser->address','$NewUser->email','$pass','$NewUser->birthday','$NewUser->stdpic')";
         if (mysqli_query($con, $query)) {
             
-            echo "<script>
-                alert('Student Has been Registered ( : ');
+            $query2 = "SELECT S_Id FROM student WHERE S_FirstName='$NewUser->firstname' AND S_LastName='$NewUser->lastname' AND S_Email='$NewUser->email'";
+                $select=mysqli_query($con, $query2);
+                $row = mysqli_fetch_array($select, MYSQLI_BOTH);
+                $ID=$row['S_Id'];
+            $query = "INSERT INTO student_phonenumber  VALUES ('$NewUser->phonenumber',' $ID')";
+                mysqli_query($con, $query);
+                
+                echo "<script>
+                alert('User Has been Registered ( : ');
                 window.location.href='login.html';
                 </script>";
         }
@@ -520,21 +548,22 @@ function updateresult($grade)
     $query1 = "SELECT* FROM pending_result WHERE S_Id='$studentid' AND C_Id='$courseid'";
     $select=(mysqli_query($con, $query1));
     if (mysqli_num_rows($select)) {
-        $query = "UPDATE pending_result set Mark='$result' , Comment='$comment' ";
+        $query = "UPDATE pending_result set Mark='$result' , Comment='$comment' WHERE S_Id='$studentid' AND C_Id='$courseid'";
         if (mysqli_query($con, $query)) {
             echo "<script>
-            alert('The result has been Modifies Succesfully and Sent to  Pending list  ( :  !');
+            alert('The result has been Modified Succesfully and Sent to Pending list  ( :  !');
             window.location.href='teacherveiw.html';
             </script>";
         }
+       
     }
-    else
-    {
-        echo "<script>
-            alert('This Result Is Not Found  ( :  !');
-            window.location.href='teacherveiw.html';
-            </script>";
-    }
+     else
+        {
+         echo "<script>
+               alert('This Result Is Not Found  ( :  !');
+             window.location.href='teacherveiw.html';
+             </script>";
+        }
 }
     function approvegrade($grade)
         {

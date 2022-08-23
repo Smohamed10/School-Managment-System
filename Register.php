@@ -20,6 +20,7 @@ if($Role=='Parent')
  $NewUser->setpassword($Password);
  $NewUser->firstname=$firstname;
  $NewUser->lastname=$Lastname;
+ $NewUser->phonenumber=$Phonenumber;
 }
 if($Role=='Teacher')
 {
@@ -30,6 +31,7 @@ if($Role=='Teacher')
  $NewUser->setpassword($Password);
  $NewUser->firstname=$firstname;
  $NewUser->lastname=$Lastname;
+ $NewUser->phonenumber=$Phonenumber;
 }
 if($Role=='Manager')
 {
@@ -40,6 +42,7 @@ if($Role=='Manager')
  $NewUser->setpassword($Password);
  $NewUser->firstname=$firstname;
  $NewUser->lastname=$Lastname;
+ $NewUser->phonenumber=$Phonenumber;
 }
 $NewUser->register($Role);
  
