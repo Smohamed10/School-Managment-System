@@ -586,7 +586,7 @@ function updateresult($grade)
                     window.location.href='managerveiw.html';
                     </script>";
                   } 
-                  $query = "DELETE FROM pending_result  WHERE S_Id='$studentid' AND C_Id='$courseid'";
+                  $query = "DELETE FROM pending_result WHERE S_Id='$studentid' AND C_Id='$courseid'";
                   (mysqli_query($con, $query));
                
                                 

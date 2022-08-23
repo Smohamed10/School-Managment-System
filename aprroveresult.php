@@ -11,10 +11,13 @@ $result=new result;
 $manager=new manager;
 
 if (isset($_POST['submit'])) {
-     while ($row=mysqli_fetch_array($select)) 
+   
+      while ($row=mysqli_fetch_array($select)) 
         {
     foreach ($_POST['check'] as $key => $value) 
-    {
+    { 
+       
+        
             if ($row['S_Id']==$_POST['check'][$key])
             {
                 $result->comment=$row['Comment'];
