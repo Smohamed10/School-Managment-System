@@ -507,6 +507,35 @@ function addcourse($course)
                    }
                                 
     }
+function updateresult($grade)
+{
+    $host = "localhost";
+    $user = "root";
+    $dbname = "sms_db";
+    $con = mysqli_connect($host, $user, "", $dbname);
+    $studentid=$grade->studentid;
+    $result=$grade->grade;
+    $comment=$grade->comment;
+    $courseid=$grade->courseid;
+    $query1 = "SELECT* FROM pending_result WHERE S_Id='$studentid' AND C_Id='$courseid'";
+    $select=(mysqli_query($con, $query1));
+    if (mysqli_num_rows($select)) {
+        $query = "UPDATE pending_result set Mark='$result' , Comment='$comment' ";
+        if (mysqli_query($con, $query)) {
+            echo "<script>
+            alert('The result has been Modifies Succesfully and Sent to  Pending list  ( :  !');
+            window.location.href='teacherveiw.html';
+            </script>";
+        }
+    }
+    else
+    {
+        echo "<script>
+            alert('This Result Is Not Found  ( :  !');
+            window.location.href='teacherveiw.html';
+            </script>";
+    }
+}
     function approvegrade($grade)
         {
             $host = "localhost"; $user = "root"; $dbname = "sms_db";
@@ -566,6 +595,7 @@ function veiwmessages($msg)
                    
                 
 ?>
+
 <style>
    
    body{

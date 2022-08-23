@@ -11,7 +11,7 @@ class teacher extends user implements Ido
     }
     public function edit($thing) 
     {
-     
+     updateresult($thing);
 
     }
     public function veiw($thing)
