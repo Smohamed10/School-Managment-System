@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     { 
        
         
-            if ($row['S_Id']==$_POST['check'][$key])
+            if ($row['R_Id']==$_POST['check'][$key])
             {
                 $result->comment=$row['Comment'];
                 $result->courseid=$row['C_Id'];

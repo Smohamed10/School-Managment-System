@@ -38,7 +38,7 @@
                         <td>$row[C_Id]</td>
                         <td>$row[Mark]</td>
                         <td>$row[Comment]</td>
-                        <td> <input type='checkbox' name='check[]' value =$row[S_Id]> </td>
+                        <td> <input type='checkbox' name='check[]' value =$row[R_Id]> </td>
                     </tr>";
 
                 } 

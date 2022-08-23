@@ -513,7 +513,7 @@ function addcourse($course)
             $comment=$grade->comment;
             $courseid=$grade->courseid;
         
-             $query = "INSERT INTO pending_result  VALUES ('$result' , '$comment' , '$studentid' , '$teacherid' , '$courseid')";
+             $query = "INSERT INTO pending_result  VALUES (NULL,'$result' , '$comment' , '$studentid' , '$teacherid' , '$courseid')";
              if (mysqli_query($con, $query))
     
                   {
