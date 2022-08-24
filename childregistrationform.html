@@ -42,14 +42,14 @@
 					<input class="text w3lpass" type="password" name="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm Password" required="">
           <input class="text" type="text" name="Address" placeholder="Student address" required="">
           <br>
-          <input class="text" type="text" name="Phonenumber" placeholder="Student Phone Number" required="">
+          <input class="text" name="Phonenumber" pattern="[0-9]+"  maxlength="11" type="text"  placeholder="New Student Phone Number" required="">
           <br>
           <label for="file-upload" class="custom-file-upload" >
             Upload Student Photo
         </label>
         <br>
         <br>
-        <input id="file-upload" type="file" name="Image" required="" />
+        <input id="file-upload" type="file" name="Image"  required  />
           <br>
           <tr>
 <td>Date of Birth(DOB)</td>

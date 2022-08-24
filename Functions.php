@@ -441,13 +441,44 @@ function addcourse($course)
 
     }
 
-    function veiwcourses()
+function enroll($course, $student)
+{
+    $host = "localhost";
+    $user = "root";
+    $dbname = "sms_db";
+    $con = mysqli_connect($host, $user, "", $dbname);
+    $query1 = "SELECT* FROM enrollment WHERE S_Id='$student->id' AND C_Id='$course->Courseid'";
+    $select=(mysqli_query($con, $query1));    
+    if (mysqli_num_rows($select)) 
     {
-        $host = "localhost"; $user = "root"; $dbname = "sms_db";
-        $con = mysqli_connect($host, $user,"",$dbname);
-        $query1 = "SELECT* FROM course";
-        $select=(mysqli_query($con, $query1));
+        
+
+            echo "<script>
+            alert('The Student Is Already Registred To One Of THis Courses  ) :  !');
+            window.location.href='studentveiw.html';
+            </script>";
     }
+    else
+    {
+        
+            
+            $query = "INSERT INTO enrollment  VALUES (NULL,'$student->id' , '$course->Courseid' , '$course->coursecode' , '$course->coursename')";
+            if (mysqli_query($con, $query)) 
+            {  
+                
+                echo "<script>
+            alert('The Student Succesfully Enrolled In This Courses ( :  !');
+            window.location.href='studentveiw.html';
+            </script>";
+
+            }
+
+    }
+
+}
+    
+
+
 
     function messageaparent($msg)
     {
@@ -620,6 +651,50 @@ function veiwmessages($msg)
                     </tr>";
         }
     }
+}
+function veiwgrade($student)
+{
+    
+$host = "localhost"; $user = "root"; $dbname = "sms_db";
+$con = mysqli_connect($host, $user,"",$dbname);
+$query1="SELECT Mark, Comment, S_Id, C_Id FROM result WHERE S_Id=$student->id";
+$select=(mysqli_query($con, $query1));
+if (mysqli_num_rows($select))
+{
+    echo "<div class='table-wrapper'>
+    <table class='fl-table'>
+        <thead>
+        <tr>
+            <th> Student Id</th>
+            <th>Course Id</th>
+            <th>Student Mark</th>
+            <th>Teacher Comment</th>
+        </tr>
+        </thead>";
+    while ($row=mysqli_fetch_array($select))
+    {
+        echo "<div class='table-wrapper'>
+       
+        <tbody>
+        <tr>
+            <td>$row[S_Id]</td>
+            <td>$row[C_Id]</td>
+            <td>$row[Mark]</td>
+            <td>$row[Comment]</td>
+        </tr>";
+
+    } 
+    
+
+}
+else
+{
+    echo "<script>
+                    alert('Result Not Found ) : ');
+                    window.location.href='veiwgrades.html';
+                    </script>";
+}
+
 }
                    
                 
