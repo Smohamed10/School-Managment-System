@@ -566,6 +566,29 @@ function enroll($course, $student)
                    }
                                 
     }
+    function assignforteacher($teacher,$course)
+    {
+        $host = "localhost"; $user = "root"; $dbname = "sms_db";
+            $con = mysqli_connect($host, $user,"",$dbname);
+            $teacherid=$teacher->id;
+            $courseid=$course->Courseid;
+
+            $query = "UPDATE teacher set C_Id='$courseid' WHERE T_Id='$teacherid'";
+            if (mysqli_query($con, $query)) {
+                echo "<script>
+                alert('The Course has been Assigned Succesfully  ( :  !');
+                window.location.href='teacherveiw.html';
+                </script>";
+            }
+         else
+            {
+             echo "<script>
+                   alert('Teacher Not Found  ( :  !');
+                 window.location.href='teacherveiw.html';
+                 </script>";
+            }
+
+    }
 function updateresult($grade)
 {
     $host = "localhost";
@@ -596,6 +619,7 @@ function updateresult($grade)
              </script>";
         }
 }
+
     function approvegrade($grade)
         {
             $host = "localhost"; $user = "root"; $dbname = "sms_db";

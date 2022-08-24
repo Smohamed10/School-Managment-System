@@ -33,7 +33,11 @@ class manager extends user implements Ido
     {
         approvegrade($result);
     }
-
+    public function assign($teacher,$course) //manager Approve Grades course
+    {
+        assignforteacher($teacher,$course);
+    }
+    
 
 
 

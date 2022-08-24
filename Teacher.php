@@ -16,7 +16,7 @@ class teacher extends user implements Ido
     }
     public function veiw($thing)
     {
-        
+        //
     }
     public function sendMessage($message)
     {
