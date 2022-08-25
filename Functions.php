@@ -365,7 +365,7 @@ function addcourse($course)
                 
                 echo "<script>
 	        alert('This Course Information Has Successfully Updated ( :  !');
-	        window.location.href='courseupdateform.html';
+	        window.location.href='managerveiw.html.html';
 	        </script>";
 
             }
@@ -375,7 +375,7 @@ function addcourse($course)
      {
             echo "<script>
                 alert('Course Not Registered ) : ');
-                window.location.href='managerveiw.html';
+                window.location.href='courseupdateform.html';
                 </script>";
     }
 }
@@ -526,7 +526,7 @@ function enroll($course, $student)
                         
                         echo "<script>
                     alert('The message Succesfully sent ( :  !');
-                    window.location.href='teacherveiw.html';
+                    window.location.href='parentveiw.html';
                     </script>";
         
                     }
@@ -560,7 +560,7 @@ function enroll($course, $student)
 
                    { 
                         echo "<script>
-                        alert('baad  ( :  !');
+                        alert('Result Not Added Check the inputs !  ( :  !');
                         window.location.href='teacherveiw.html';
                         </script>";
                    }
@@ -577,14 +577,14 @@ function enroll($course, $student)
             if (mysqli_query($con, $query)) {
                 echo "<script>
                 alert('The Course has been Assigned Succesfully  ( :  !');
-                window.location.href='teacherveiw.html';
+                window.location.href='managerveiw.html';
                 </script>";
             }
          else
             {
              echo "<script>
                    alert('Teacher Not Found  ( :  !');
-                 window.location.href='teacherveiw.html';
+                 window.location.href='managerveiw.html';
                  </script>";
             }
 

@@ -24,7 +24,7 @@ class parents extends user implements Ido
     }
     public function veiw($thing)
     {
-        
+        //
     }
     public function send($message)
     {
